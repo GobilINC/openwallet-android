@@ -15,7 +15,7 @@ dependencies {
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile 'com.madgag.spongycastle:core:1.51.0.0'
 
-    compile 'com.lambdaworks:scrypt:1.4.0'
+    implementation 'com.lambdaworks:scrypt:1.4.0'
 
     compile 'com.google.protobuf:protobuf-java:2.5.0'
     compile 'org.slf4j:slf4j-jdk14:1.7.6'
@@ -40,7 +40,7 @@ sourceSets {
 // add the unitTest task
 task unitTest(type:Test, dependsOn: assemble) {
     description = "run unit tests"
-    testClassesDir = project.sourceSets.unitTest.output.classesDir
+    testClassesDirs = project.sourceSets.unitTest.output.classesDirs
     classpath = project.sourceSets.unitTest.runtimeClasspath
 }
 

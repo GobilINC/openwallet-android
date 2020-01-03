@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "com.openwallet.wallet.dev"
+        applicationId "com.openwallet.wallet"
         minSdkVersion 10
         targetSdkVersion 23
         versionCode 56
         versionName "v1.6.3"
+        javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
 
     buildTypes {
@@ -27,6 +27,19 @@ android {
         androidTest {
             setRoot('src/test')
         }
+    }
+
+    packagingOptions {
+        exclude 'lib/x86_64/darwin/libscrypt.dylib'
+        exclude 'lib/x86_64/freebsd/libscrypt.so'
+        exclude 'lib/x86_64/linux/libscrypt.so'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        // abortOnError false
     }
 }
 
@@ -64,6 +77,7 @@ dependencies {
     compile 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
     compile 'com.jakewharton:butterknife:7.0.1'
 }
+
 
 //apply plugin: 'robolectric'
 
